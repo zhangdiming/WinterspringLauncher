@@ -17,7 +17,7 @@ public class UpdateApiClient
     public (string? provider, string downloadUrl) GetWindowsGameDownloadSource()
     {
         return _config.WindowsGameDownloadUrl == LauncherConfig.DEFAULT_CONFIG_VALUE
-            ? ("wowdl.net", "https://us-download.wowdl.net/downloadFiles/Clients/WoW%20Classic%201.14.2.42597%20All%20Languages.rar")
+            ? ("wowdl.net", "https://download.wowdl.net/downloadFiles/Clients/WoW%20Classic%201.14.2.42597%20All%20Languages.rar")
             : (null, _config.WindowsGameDownloadUrl);
     }
 

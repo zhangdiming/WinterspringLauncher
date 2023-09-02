@@ -11,8 +11,8 @@ public class LauncherConfig
 
     public int ConfigVersion { get; set; } = 1;
 
-    public string GitRepoWinterspringLauncher { get; set; } = "0blu/WinterspringLauncher";
-    public string GitRepoHermesProxy { get; set; } = "WowLegacyCore/HermesProxy";
+    public string GitRepoWinterspringLauncher { get; set; } = "zhangdiming/WinterspringLauncher";
+    public string GitRepoHermesProxy { get; set; } = "zhangdiming/HermesProxy";
     public string GitRepoArctiumLauncher { get; set; } = "Arctium/WoW-Launcher";
 
     public string WindowsGameDownloadUrl { get; set; } = DEFAULT_CONFIG_VALUE;

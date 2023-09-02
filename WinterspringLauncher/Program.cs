@@ -130,7 +130,7 @@ class Launcher
                 if (onlyNotify)
                 {
                     Console.WriteLine("A new version was released, please update");
-                    Console.WriteLine("https://github.com/0blu/WinterspringLauncher/releases");
+                    Console.WriteLine("https://github.com/zhangdiming/WinterspringLauncher/releases");
                     Thread.Sleep(TimeSpan.FromSeconds(12));
                 }
                 else
@@ -235,7 +235,7 @@ class Launcher
     {
         if (!LauncherActions.CheckGameIntegrity(gamePath, macBuild: weAreOnMacOs))
         {
-            Console.WriteLine("Did not found complete 1.14 game installation");
+            Console.WriteLine("Did not found complete 1.14.2 game installation");
 
             if (!LauncherActions.ContainsValidGameZip(weAreOnMacOs))
             {
@@ -320,7 +320,7 @@ class Launcher
     private static void PrintLogo()
     {
         Console.WriteLine($"Version: {GetVersionInformation()}");
-        Console.WriteLine("https://github.com/0blu/WinterspringLauncher");
+        Console.WriteLine("https://github.com/zhangdiming/WinterspringLauncher");
         Console.WriteLine("");
 
         void WriteWithASubtext(string logo, string subText)
@@ -340,8 +340,8 @@ class Launcher
         WriteWithASubtext("    ,,,,. .,,,,   ,,,,.   ,,,,", "         Launcher");
         Console.WriteLine("    .,,,,         ,,,,.   ,,,,");
         WriteWithASubtext("     ,,,,,,,...,,,,,,,   ,,,,.", "      Allows you to");
-        WriteWithASubtext("       ,,,,,,,,,,,..   .,,,,,", "      play on Everlook");
-        WriteWithASubtext("   ,.        .       .,,,,,,", "    using the modern client");
+        WriteWithASubtext("       ,,,,,,,,,,,..   .,,,,,", "      play on WoW Vanilla");
+        WriteWithASubtext("   ,.        .       .,,,,,,", "    using the Classic client");
         Console.WriteLine("     ,,,..      ..,,,,,,,.");
         Console.WriteLine("       .,,,,,,,,,,,,,,,");
         Console.ForegroundColor = pre;
