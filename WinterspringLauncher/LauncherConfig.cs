@@ -13,7 +13,7 @@ public class LauncherConfig
 
     public string GitRepoWinterspringLauncher { get; set; } = "zhangdiming/WinterspringLauncher";
     public string GitRepoHermesProxy { get; set; } = "zhangdiming/HermesProxy";
-    public string GitRepoArctiumLauncher { get; set; } = "Arctium/WoW-Launcher";
+    public string GitRepoArctiumLauncher { get; set; } = "zhangdiming/WoW-Launcher";
 
     public string WindowsGameDownloadUrl { get; set; } = DEFAULT_CONFIG_VALUE;
     public string MacGameDownloadUrl { get; set; } = DEFAULT_CONFIG_VALUE;

@@ -336,7 +336,7 @@ class Launcher
         Console.WriteLine("            ...      ..");
         Console.WriteLine("       .,,,,,..        .,,");
         Console.WriteLine("     ,,,,,    ....       ,,,");
-        WriteWithASubtext("    .,,,.  ,,,,,,,,,,,    ,,,", "        Winterspring");
+        WriteWithASubtext("    .,,,.  ,,,,,,,,,,,    ,,,", "        Classic Client");
         WriteWithASubtext("    ,,,,. .,,,,   ,,,,.   ,,,,", "         Launcher");
         Console.WriteLine("    .,,,,         ,,,,.   ,,,,");
         WriteWithASubtext("     ,,,,,,,...,,,,,,,   ,,,,.", "      Allows you to");

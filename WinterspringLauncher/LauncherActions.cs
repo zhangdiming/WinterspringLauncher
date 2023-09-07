@@ -142,9 +142,13 @@ public static class LauncherActions
             configContent = new List<string>();
 
         var newLine = "SET portal \"127.0.0.1:1119\"";
+        var newtextLocaleLine = "SET textLocale zhCN";
+        var newaudioLocaleLine = "SET audioLocale zhCN";
         bool wasChanged = false;
 
         var currentPortalLine = configContent.FindIndex(l => l.StartsWith("SET portal "));
+        var currenttextLocaleLine = configContent.FindIndex(l => l.StartsWith("SET textLocale "));
+        var currentaudioLocaleLine = configContent.FindIndex(l => l.StartsWith("SET audioLocale "));
         if (currentPortalLine != -1)
         {
             if (configContent[currentPortalLine] != newLine)
@@ -156,6 +160,32 @@ public static class LauncherActions
         else
         {
             configContent.Add(newLine);
+            wasChanged = true;
+        }
+        if (currenttextLocaleLine != -1)
+        {
+            if (configContent[currenttextLocaleLine] != newtextLocaleLine)
+            {
+                configContent[currenttextLocaleLine] = newtextLocaleLine;
+                wasChanged = true;
+            }
+        }
+        else
+        {
+            configContent.Add(newtextLocaleLine);
+            wasChanged = true;
+        }
+        if (currentaudioLocaleLine != -1)
+        {
+            if (configContent[currentaudioLocaleLine] != newaudioLocaleLine)
+            {
+                configContent[currentaudioLocaleLine] = newaudioLocaleLine;
+                wasChanged = true;
+            }
+        }
+        else
+        {
+            configContent.Add(newaudioLocaleLine);
             wasChanged = true;
         }
 
@@ -476,7 +506,7 @@ public static class LauncherActions
 
     public static void PrepareHermesProxyConfig(string hermesPath, string realmlist)
     {
-        var hermesConfigPath = Path.Combine(hermesPath, "HermesProxy.config");
+        var hermesConfigPath = Path.Combine(hermesPath, "HermesProxy.dll.config");
         XmlDocument doc = new XmlDocument();
         doc.Load(hermesConfigPath);
 
@@ -490,8 +520,8 @@ public static class LauncherActions
             XmlNode serverAddrNode = appSettings.SelectSingleNode("add[@key='ServerAddress']")!;
             serverAddrNode.Attributes!["value"]!.Value = realmlist;
 
-            XmlNode packetLogNode = appSettings.SelectSingleNode("add[@key='PacketsLog']")!;
-            packetLogNode.Attributes!["value"]!.Value = "false";
+            //XmlNode packetLogNode = appSettings.SelectSingleNode("add[@key='PacketsLog']")!;
+            //packetLogNode.Attributes!["value"]!.Value = "false";
 
             var modifiedMarker = doc.CreateElement(modifiedAttrName);
             modifiedMarker.SetAttribute("comment", "This file might get overwritten when new Hermes update is applied");

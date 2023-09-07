@@ -4,11 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ApplicationIcon>launcher.ico</ApplicationIcon>
-    <Authors>_BLU</Authors>
+    <Authors>Professor</Authors>
     <ImplicitUsings>true</ImplicitUsings>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <DebugType>embedded</DebugType>
+    <PackageIcon>winterspring-launcher-icon.png</PackageIcon>
+    <ApplicationIcon>launcher.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(UsePublishBuildSettings)' == 'true'">
@@ -30,6 +31,17 @@
 
   <ItemGroup>
     <EmbeddedResource Include="HermesDataPatches/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="launcher.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\winterspring-launcher-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

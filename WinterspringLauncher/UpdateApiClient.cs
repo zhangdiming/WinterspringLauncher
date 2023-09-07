@@ -1,5 +1,6 @@
 using System.Data;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -17,7 +18,7 @@ public class UpdateApiClient
     public (string? provider, string downloadUrl) GetWindowsGameDownloadSource()
     {
         return _config.WindowsGameDownloadUrl == LauncherConfig.DEFAULT_CONFIG_VALUE
-            ? ("wowdl.net", "https://download.wowdl.net/downloadFiles/Clients/WoW%20Classic%201.14.2.42597%20All%20Languages.rar")
+            ? ("azeroth-classic.org", "http://dl.azeroth-classic.org/clients/WoW_Classic_1.14.2.42597_All_Languages.rar")
             : (null, _config.WindowsGameDownloadUrl);
     }
 
@@ -59,8 +60,22 @@ public class UpdateApiClient
 
     private static TJsonResponse PerformWebRequest<TJsonResponse>(string url) where TJsonResponse : new()
     {
-        using var client = new HttpClient();
+        var proxy = new WebProxy("http://000000")
+        {
+            Credentials = new NetworkCredential("000000", "000000")
+        };
+
+        using var httpClientHandler = new HttpClientHandler
+        {
+            Proxy = proxy,
+            UseProxy = true,
+        };
+
+        using var client = new HttpClient(httpClientHandler);
         client.DefaultRequestHeaders.Add("User-Agent", "curl/7.0.0"); // otherwise we get blocked
+                                                                      // 添加 Authorization 头部，使用 Bearer 认证方式，并附加 Access Token
+        string accessToken = "ghp_SCCE1kN3SEd8HLIFwvNGi3bfdzxRW11xQ48D";
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         var response = client.GetAsync(url).GetAwaiter().GetResult();
         if (response.StatusCode == HttpStatusCode.Forbidden)
         {
@@ -76,7 +91,7 @@ public class UpdateApiClient
         if (parsedJson == null)
         {
             Console.WriteLine($"Debug: {rawJson}");
-            throw new NoNullAllowedException("The web response resulted in an null object");
+            throw new NoNullAllowedException("The web response resulted in a null object");
         }
         return parsedJson;
     }
